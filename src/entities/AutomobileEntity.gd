@@ -10,9 +10,9 @@ var _camera: Camera2D = $Camera2D
 @onready
 var _collision: CollisionShape2D = $collision
 
-var _rotation_tween: ConstantRotationTween = ConstantRotationTween(200)
+var _rotation_tween: ConstantRotationTween = ConstantRotationTween.new(200)
 
-var _turn_dir: TurnDirection = TurnDirection.RIGHT
+var _turn_dir: int = TurnDirection.RIGHT
 var _moving: bool = false
 var _pressing_up: bool = false
 var _pressing_down: bool = false
@@ -43,7 +43,7 @@ func _ready():
     self.rotation_degrees = TurnDirectionf.angle(self._turn_dir)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-    var k: Vector2
+    var k: Vector2 = null
     self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
 
     if self._turn_dir == TurnDirection.LEFT or self._turn_dir == TurnDirection.RIGHT:
@@ -72,15 +72,7 @@ func _process(delta):
         self._pressing_right = Input.is_action_pressed("move_right")
 
         var k = self._turn_dir
-        self._turn_dir =
-            TurnDirection.UP_LEFT if (self._pressing_up and self._pressing_left) else
-            TurnDirection.UP_RIGHT if (self._pressing_up and self._pressing_right) else
-            TurnDirection.UP if self._pressing_up else
-            TurnDirection.DOWN_LEFT if (self._pressing_down and self._pressing_left) else
-            TurnDirection.DOWN_RIGHT if (self._pressing_down and self._pressing_right) else
-            TurnDirection.DOWN if self._pressing_down else
-            TurnDirection.LEFT if self._pressing_left else
-            TurnDirection.RIGHT if self._pressing_right else self._turn_dir
+        self._turn_dir = TurnDirection.UP_LEFT if (self._pressing_up and self._pressing_left) else TurnDirection.UP_RIGHT if (self._pressing_up and self._pressing_right) else TurnDirection.UP if self._pressing_up else TurnDirection.DOWN_LEFT if (self._pressing_down and self._pressing_left) else TurnDirection.DOWN_RIGHT if (self._pressing_down and self._pressing_right) else TurnDirection.DOWN if self._pressing_down else TurnDirection.LEFT if self._pressing_left else TurnDirection.RIGHT if self._pressing_right else self._turn_dir
 
         if k != self._turn_dir:
             self._rotation_tween.tween(self, TurnDirectionf.angle(self._turn_dir))

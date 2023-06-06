@@ -1,4 +1,6 @@
-enum TurnDirection {
+class_name TurnDirection
+
+enum {
     UP,
     UP_LEFT,
     UP_RIGHT,
