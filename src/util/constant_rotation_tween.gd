@@ -31,7 +31,7 @@ func tween(tween_node: Node2D, target_degrees: float):
     # keep target rotation between 0-360
     var a = target_degrees
     a = 360 - (-a % 360) if a < 0 else a
-    self._target_degrees = Mathf.round(a) % 360
+    self._target_degrees = Math.round(a) % 360
 
     self._running = true
 
@@ -67,7 +67,7 @@ func _update_route():
     var go_clockwise = ab < ba
     self._increment_scale = 1 if go_clockwise else -1
     self._route_result_go_clockwise = go_clockwise
-    self._route_result_delta = Mathf.round(ab if go_clockwise else ba)
+    self._route_result_delta = Math.round(ab if go_clockwise else ba)
 
 # keep node rotation between 0-360.
 func _lock_tween_node_rotation():

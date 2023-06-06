@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1300
 window/stretch/mode="viewport"
 
+[dotnet]
+
+project/assembly_name="Car Knock Online"
+
 [gui]
 
 theme/custom="res://src/themes/default.tres"
