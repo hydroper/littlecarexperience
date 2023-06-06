@@ -1,6 +1,8 @@
 class_name AutomobileEntity
 extends RigidBody2D
 
+enum TurnDirection { UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT }
+
 var player_data: PlayerData = null
 var is_main_player: bool = false
 
@@ -43,7 +45,7 @@ func _ready():
     self.rotation_degrees = TurnDirectionf.angle(self._turn_dir)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-    var k: Vector2 = null
+    var k: Vector2
     self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
 
     if self._turn_dir == TurnDirection.LEFT or self._turn_dir == TurnDirection.RIGHT:
