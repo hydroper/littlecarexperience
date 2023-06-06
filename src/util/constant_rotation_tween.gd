@@ -29,7 +29,7 @@ func tween(tween_node: Node2D, target_degrees: float):
     self._current_rotation = self._tween_node.rotation_degrees
 
     # keep target rotation between 0-360
-    float a = target_degrees
+    var a = target_degrees
     a = 360 - (-a % 360) if a < 0 else a
     self._target_degrees = Mathf.round(a) % 360
 
