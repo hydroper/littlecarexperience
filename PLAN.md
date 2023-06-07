@@ -18,15 +18,9 @@ Future room types:
 - Knockout
 - Racing
 
-## Entities
-
-- [ ] Automobile
-- [ ] Box object
-- [ ] Building (?)
-
 ## Scrolling
 
-For now, implement a simple scroll that is centered to the player. Eventually the scroll can be more dynamic.
+Mimmick SharkBite Bay Adventure's scrolling.
 
 - [ ] ?
 
@@ -42,3 +36,10 @@ Implementation:
 
 - [ ] Do not let car idle on a diagonal
 - [ ] Unapply acceleration from a previous direction
+
+## Player Hit Spin
+
+When the player is hit it might be desired to spin it for a few seconds. When doing that:
+
+- [ ] 1. Turn the player entity invisible
+- [ ] 2. Add an object in the same position as the player's entity and keep that object rotating clockwise
