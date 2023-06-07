@@ -40,6 +40,7 @@ func integrate_forces(state: PhysicsDirectBodyState2D):
     var current_rotation = self._current_rotation
     if current_rotation == self._target_degrees:
         self._running = false
+        state.angular_velocity = 0
         return
     self._update_route(current_rotation)
     var go_clockwise = self._route_result_go_clockwise
