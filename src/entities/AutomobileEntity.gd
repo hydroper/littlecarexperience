@@ -94,4 +94,5 @@ func _process(delta):
     self.move_forward(delta)
 
 func move_forward(_delta):
+    # self.apply_force(self.raw_speed)
     self.apply_central_force(self.raw_speed)
