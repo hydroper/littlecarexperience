@@ -45,7 +45,7 @@ func integrate_forces(state: PhysicsDirectBodyState2D):
     self._update_route(current_rotation)
     var go_clockwise = self._route_result_go_clockwise
     var route_delta = self._route_result_delta
-    state.angular_velocity = (1 if route_delta <= 3 else self.increment_degrees) * self._increment_scale
+    state.angular_velocity = (1.0 if route_delta <= 3 else self.increment_degrees) * self._increment_scale
 
 func _update_route(current_rotation: float):
     var a = self._target_degrees

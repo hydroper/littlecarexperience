@@ -19,5 +19,5 @@ func _ready():
     self.world_entities.add_child(self.main_player)
     self.world_entity_labels.add_child(self.main_player.player_label)
 
-func _process(delta):
+func _process(_delta):
     pass

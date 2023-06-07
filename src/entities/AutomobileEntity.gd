@@ -11,9 +11,6 @@ var is_main_player: bool = false
 @onready
 var _camera: Camera2D = $Camera2D
 
-@onready
-var _collision: CollisionShape2D = $collision
-
 var _rotation_tween: ConstantPhysicsRotationTween = null
 
 var _turn_dir: int = TurnDirection.RIGHT
@@ -98,5 +95,5 @@ func _process(delta):
 
     self.move_forward(delta)
 
-func move_forward(delta):
+func move_forward(_delta):
     self.apply_central_force(self.raw_speed)
