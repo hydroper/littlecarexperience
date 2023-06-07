@@ -23,7 +23,7 @@ func is_running() -> bool:
 
 # keep rotation angle between 0-360.
 static func _fix_angle_range(a: float) -> float:
-    return 360 - fmod(-a, 360.0) if a < 0 else a 
+    return 360 - fmod(-a, 360.0) if a < 0 else fmod(a, 360.0)
 
 func tween(target_degrees: float):
     if self.is_running():
