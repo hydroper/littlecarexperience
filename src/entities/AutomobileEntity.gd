@@ -4,6 +4,8 @@ extends RigidBody2D
 enum TurnDirection { UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT }
 
 var player_data: PlayerData = null
+var player_label: Node2D = null
+
 var is_main_player: bool = false
 
 @onready
@@ -36,6 +38,10 @@ var raw_speed: Vector2:
 var current_rotation: float:
     get:
         return self.rotation_degrees
+
+func _init():
+    self.player_label = preload("res://src/entities/EntityLabel.tscn").instantiate()
+    self.player_label.entity = self
 
 func _ready():
     self._rotation_tween = ConstantPhysicsRotationTween.new(self, 5)
