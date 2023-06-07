@@ -41,7 +41,7 @@ Implementation:
 
 When the player is hit it might be desired to spin it for a few seconds. When doing that:
 
-- [ ] 1. Turn the player entity invisible
-- [ ] 2. Add an object in the same position as the player's entity and keep that object rotating clockwise
+- [ ] 1. Turn the player entity's skin and shadow invisible; however do not disable the entity itself (the `RigidBody2D` and its collision)
+- [ ] 2. Add an object in the same position and rotation as the player's entity and keep that object rotating clockwise
 
 If the game introduces skills, beware of handling possible bugs. For example: if someone throws a bomb on another car that is currently inactive spinning after a hit, what is the behavior?
