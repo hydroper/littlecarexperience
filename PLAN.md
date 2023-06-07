@@ -43,3 +43,5 @@ When the player is hit it might be desired to spin it for a few seconds. When do
 
 - [ ] 1. Turn the player entity invisible
 - [ ] 2. Add an object in the same position as the player's entity and keep that object rotating clockwise
+
+If the game introduces skills, beware of handling possible bugs. For example: if someone throws a bomb on another car that is currently inactive spinning after a hit, what is the behavior?
