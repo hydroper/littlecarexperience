@@ -46,7 +46,6 @@ func _ready():
     self.rotation_degrees = TurnDirectionf.angle(self._turn_dir)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-    var k: Vector2
     self._rotation_tween.integrate_forces(state)
 
     if self._turn_dir == TurnDirection.LEFT or self._turn_dir == TurnDirection.RIGHT:
@@ -59,10 +58,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
     self.linear_velocity.x = (self.linear_velocity.x - self.linear_velocity.x / DECEL) if (not self._pressing_left && not self._pressing_right) else self.linear_velocity.x
     self.linear_velocity.y = (self.linear_velocity.y - self.linear_velocity.y / DECEL) if (not self._pressing_up && not self._pressing_down) else self.linear_velocity.y
 
-    # maximum speed
-    k = self.linear_velocity
-    self.linear_velocity.x = -self._max_speed if k.x < -self._max_speed else self._max_speed if k.x > self._max_speed else k.x
-    self.linear_velocity.y = -self._max_speed if k.y < -self._max_speed else self._max_speed if k.y > self._max_speed else k.y
+    # max speed
+    self.linear_velocity.x = min(max(self.linear_velocity.x, -self._max_speed), self._max_speed)
+    self.linear_velocity.y = min(max(self.linear_velocity.y, -self._max_speed), self._max_speed)
 
 func _process(delta):
     self._camera.enabled = self.is_main_player
