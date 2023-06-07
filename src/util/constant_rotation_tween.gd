@@ -13,7 +13,7 @@ var _route_result_delta: float = 0
 
 var current_rotation: float:
     get:
-        return self.current_rotation
+        return self._current_rotation
 
 func _init(increment_degrees: float):
     self.increment_degrees = increment_degrees
@@ -30,8 +30,8 @@ func tween(tween_node: Node2D, target_degrees: float):
 
     # keep target rotation between 0-360
     var a = target_degrees
-    a = 360 - (-a % 360) if a < 0 else a
-    self._target_degrees = round(a) % 360
+    a = 360 - fmod(-a, 360.0) if a < 0 else a
+    self._target_degrees = fmod(roundf(a), 360.0)
 
     self._running = true
 
@@ -51,7 +51,7 @@ func process(delta: float):
     var go_clockwise = self._route_result_go_clockwise
     var route_delta = self._route_result_delta
     self._current_rotation += self.increment_degrees * self._increment_scale * delta
-    if self._route_delta <= 1.8:
+    if route_delta <= 1.8:
         self._tween_node.rotation_degrees = self._target_degrees
         self._running = false
     else:
@@ -67,10 +67,10 @@ func _update_route():
     var go_clockwise = ab < ba
     self._increment_scale = 1 if go_clockwise else -1
     self._route_result_go_clockwise = go_clockwise
-    self._route_result_delta = round(ab if go_clockwise else ba)
+    self._route_result_delta = roundf(ab if go_clockwise else ba)
 
 # keep node rotation between 0-360.
 func _lock_tween_node_rotation():
     var a = self._current_rotation
-    a = 360 - (-a % 360) if a < 0 else a
-    self._current_rotation = a % 360
+    a = 360 - fmod(-a, 360) if a < 0 else a
+    self._current_rotation = fmod(a, 360)
