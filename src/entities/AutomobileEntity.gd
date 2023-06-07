@@ -24,7 +24,6 @@ var _move_speed: float = 700
 var _max_speed: float = 1000
 
 const DECEL: float = 14
-const ROTATION_ENABLED = true
 
 var move_speed: float:
     get:
@@ -47,8 +46,7 @@ func _ready():
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
     var k: Vector2
-    if ROTATION_ENABLED:
-        self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
+    self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
 
     if self._turn_dir == TurnDirection.LEFT or self._turn_dir == TurnDirection.RIGHT:
         self.linear_velocity.x = (self.linear_velocity.x - self.linear_velocity.x / 8) if (self.linear_velocity.x > 2 if self._turn_dir == TurnDirection.LEFT else self.linear_velocity.x < -2) else self.linear_velocity.x
@@ -95,12 +93,10 @@ func _process(delta):
         self._pressing_left = false
         self._pressing_right = false
 
-    if ROTATION_ENABLED:
-        self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
+    self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
     self.move_forward(delta)
-    if ROTATION_ENABLED:
-        self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
-        self._rotation_tween.process(delta)
+    self.rotation_degrees = self._rotation_tween.current_rotation if self._rotation_tween.is_running() else TurnDirectionf.angle(self._turn_dir)
+    self._rotation_tween.process(delta)
 
 func move_forward(delta):
     self.apply_central_force(self.raw_speed)
