@@ -43,4 +43,4 @@ If the game introduces skills, beware of handling possible bugs. For example: if
 ## Godot stuff
 
 - Physics
-  - Position can be reseted in `_integrate_forces` though `physics_state.transform.origin`
+  - Position can be reseted in `_integrate_forces` though `physics_state.transform.origin`. This can be useful for teleports.
