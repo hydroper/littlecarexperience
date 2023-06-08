@@ -1,8 +1,6 @@
 class_name AutomobileEntity
 extends RigidBody2D
 
-enum TurnDirection { UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT }
-
 var player_data: PlayerData = null
 var player_label: Node2D = preload("res://src/entities/EntityLabel.tscn").instantiate()
 
@@ -13,8 +11,7 @@ var _camera: Camera2D = $Camera2D
 
 var _rotation_tween: ConstantPhysicsRotationTween = null
 
-# _turn_dir: TurnDirection
-var _turn_dir: int = TurnDirection.RIGHT
+var _turn_dir: TurnDirection = TurnDirection.RIGHT
 
 var _moving: bool = false
 var _pressing_up: bool = false
@@ -32,7 +29,7 @@ var move_speed: float:
 
 var raw_speed: Vector2:
     get:
-        return TurnDirectionf.speed_of(self._turn_dir, self) if self._moving else Vector2.ZERO
+        return self._turn_dir.speed_of(self) if self._moving else Vector2.ZERO
 
 var current_rotation: float:
     get:
@@ -41,7 +38,7 @@ var current_rotation: float:
 func _ready() -> void:
     self._rotation_tween = ConstantPhysicsRotationTween.new(self, 5)
     self._camera.enabled = self.is_main_player
-    self.rotation_degrees = TurnDirectionf.angle(self._turn_dir)
+    self.rotation_degrees = self._turn_dir.angle
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     self._rotation_tween.integrate_forces(state)
@@ -79,17 +76,17 @@ func _process(delta: float) -> void:
         self._pressing_right = false
 
     if k != self._turn_dir:
-        self._rotation_tween.tween(TurnDirectionf.angle(self._turn_dir))
+        self._rotation_tween.tween(self._turn_dir.angle)
 
     self._moving = self._pressing_up or self._pressing_down or self._pressing_left or self._pressing_right
 
     if not self._moving:
         if self._turn_dir == TurnDirection.UP_LEFT or self._turn_dir == TurnDirection.DOWN_LEFT:
             self._turn_dir = TurnDirection.LEFT
-            self._rotation_tween.tween(TurnDirectionf.angle(self._turn_dir))
+            self._rotation_tween.tween(self._turn_dir.angle)
         elif self._turn_dir == TurnDirection.UP_RIGHT or self._turn_dir == TurnDirection.DOWN_RIGHT:
             self._turn_dir = TurnDirection.RIGHT
-            self._rotation_tween.tween(TurnDirectionf.angle(self._turn_dir))
+            self._rotation_tween.tween(self._turn_dir.angle)
 
     self.move_forward(delta)
 
