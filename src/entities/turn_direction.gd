@@ -21,7 +21,7 @@ func _init(v: int, angle: float, speed: Vector2):
     TurnDirection._from[v] = self
 
 static func from(value: int) -> TurnDirection:
-    return TurnDirection._from[value]
+    return TurnDirection._from.get(value)
 
 func value_of() -> int:
     return self._v
