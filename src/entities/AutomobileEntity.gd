@@ -55,8 +55,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
     state.linear_velocity.y = (state.linear_velocity.y - state.linear_velocity.y / DECEL) if (not self._pressing_up && not self._pressing_down) else state.linear_velocity.y
 
     # max speed
-    state.linear_velocity.x = min(max(state.linear_velocity.x, -self._max_speed), self._max_speed)
-    state.linear_velocity.y = min(max(state.linear_velocity.y, -self._max_speed), self._max_speed)
+    state.linear_velocity.x = clampf(state.linear_velocity.x, -self._max_speed, self._max_speed)
+    state.linear_velocity.y = clampf(state.linear_velocity.y, -self._max_speed, self._max_speed)
 
 func _process(delta):
     self._camera.enabled = self.is_main_player
