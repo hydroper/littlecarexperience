@@ -13,7 +13,9 @@ var _camera: Camera2D = $Camera2D
 
 var _rotation_tween: ConstantPhysicsRotationTween = null
 
+# _turn_dir: TurnDirection
 var _turn_dir: int = TurnDirection.RIGHT
+
 var _moving: bool = false
 var _pressing_up: bool = false
 var _pressing_down: bool = false
@@ -36,12 +38,12 @@ var current_rotation: float:
     get:
         return self.rotation_degrees
 
-func _ready():
+func _ready() -> void:
     self._rotation_tween = ConstantPhysicsRotationTween.new(self, 5)
     self._camera.enabled = self.is_main_player
     self.rotation_degrees = TurnDirectionf.angle(self._turn_dir)
 
-func _integrate_forces(state: PhysicsDirectBodyState2D):
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     self._rotation_tween.integrate_forces(state)
 
     if self._turn_dir == TurnDirection.LEFT or self._turn_dir == TurnDirection.RIGHT:
@@ -58,7 +60,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
     state.linear_velocity.x = clampf(state.linear_velocity.x, -self._max_speed, self._max_speed)
     state.linear_velocity.y = clampf(state.linear_velocity.y, -self._max_speed, self._max_speed)
 
-func _process(delta):
+func _process(delta: float) -> void:
     self._camera.enabled = self.is_main_player
     self.player_label.position = self.position
 
@@ -91,6 +93,6 @@ func _process(delta):
 
     self.move_forward(delta)
 
-func move_forward(_delta):
+func move_forward(_delta: float) -> void:
     # self.apply_force(self.raw_speed)
     self.apply_central_force(self.raw_speed)
