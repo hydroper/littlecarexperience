@@ -6,14 +6,11 @@ Damage other players by knocking them. Under a time limit, the player with the g
 
 The game has an almost unique movement system based on SharkBite Bay Adventure.
 
-## Rooms
+## Lobbby and game types
 
-The player is present in a room. There are two room types:
+The player is initially present in a lobby. A game type can be found by navigating the lobby.
 
-- Lobby
-- Vanilla
-
-Future room types:
+Future game types:
 
 - Knockout
 - Racing
@@ -42,3 +39,8 @@ Implementation:
 When the player is hit it might be desired to spin it for a few seconds. To achieve that, simply rotate the `skin` child of the entity and, once the spin finishes, reset the `skin` rotation.
 
 If the game introduces skills, beware of handling possible bugs. For example: if someone throws a bomb on another car that is currently inactive spinning after a hit, what is the behavior?
+
+## Godot stuff
+
+- Physics
+  - Position can be reseted in `_integrate_forces` though `physics_state.transform.origin`

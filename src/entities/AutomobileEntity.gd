@@ -4,7 +4,7 @@ extends RigidBody2D
 enum TurnDirection { UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT }
 
 var player_data: PlayerData = null
-var player_label: Node2D = null
+var player_label: Node2D = preload("res://src/entities/EntityLabel.tscn").instantiate()
 
 var is_main_player: bool = false
 
@@ -36,10 +36,6 @@ var current_rotation: float:
     get:
         return self.rotation_degrees
 
-func _init():
-    self.player_label = preload("res://src/entities/EntityLabel.tscn").instantiate()
-    self.player_label.entity = self
-
 func _ready():
     self._rotation_tween = ConstantPhysicsRotationTween.new(self, 5)
     self._camera.enabled = self.is_main_player
@@ -49,21 +45,22 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
     self._rotation_tween.integrate_forces(state)
 
     if self._turn_dir == TurnDirection.LEFT or self._turn_dir == TurnDirection.RIGHT:
-        self.linear_velocity.x = (self.linear_velocity.x - self.linear_velocity.x / 8) if (self.linear_velocity.x > 2 if self._turn_dir == TurnDirection.LEFT else self.linear_velocity.x < -2) else self.linear_velocity.x
-        self.linear_velocity.y = self.linear_velocity.y - self.linear_velocity.y / 12
+        state.linear_velocity.x = (state.linear_velocity.x - state.linear_velocity.x / 8) if (state.linear_velocity.x > 2 if self._turn_dir == TurnDirection.LEFT else state.linear_velocity.x < -2) else state.linear_velocity.x
+        state.linear_velocity.y = state.linear_velocity.y - state.linear_velocity.y / 12
     elif self._turn_dir == TurnDirection.UP or self._turn_dir == TurnDirection.DOWN:
-        self.linear_velocity.y = (self.linear_velocity.y - self.linear_velocity.y / 8) if (self.linear_velocity.y > 2 if self._turn_dir == TurnDirection.UP else self.linear_velocity.y < -2) else self.linear_velocity.y
-        self.linear_velocity.x = self.linear_velocity.x - self.linear_velocity.x / 12
+        state.linear_velocity.y = (state.linear_velocity.y - state.linear_velocity.y / 8) if (state.linear_velocity.y > 2 if self._turn_dir == TurnDirection.UP else state.linear_velocity.y < -2) else state.linear_velocity.y
+        state.linear_velocity.x = state.linear_velocity.x - state.linear_velocity.x / 12
 
-    self.linear_velocity.x = (self.linear_velocity.x - self.linear_velocity.x / DECEL) if (not self._pressing_left && not self._pressing_right) else self.linear_velocity.x
-    self.linear_velocity.y = (self.linear_velocity.y - self.linear_velocity.y / DECEL) if (not self._pressing_up && not self._pressing_down) else self.linear_velocity.y
+    state.linear_velocity.x = (state.linear_velocity.x - state.linear_velocity.x / DECEL) if (not self._pressing_left && not self._pressing_right) else state.linear_velocity.x
+    state.linear_velocity.y = (state.linear_velocity.y - state.linear_velocity.y / DECEL) if (not self._pressing_up && not self._pressing_down) else state.linear_velocity.y
 
     # max speed
-    self.linear_velocity.x = min(max(self.linear_velocity.x, -self._max_speed), self._max_speed)
-    self.linear_velocity.y = min(max(self.linear_velocity.y, -self._max_speed), self._max_speed)
+    state.linear_velocity.x = min(max(state.linear_velocity.x, -self._max_speed), self._max_speed)
+    state.linear_velocity.y = min(max(state.linear_velocity.y, -self._max_speed), self._max_speed)
 
 func _process(delta):
     self._camera.enabled = self.is_main_player
+    self.player_label.position = self.position
 
     if self.is_main_player:
         self._pressing_up = Input.is_action_pressed("move_up")
