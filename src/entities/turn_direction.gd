@@ -21,5 +21,6 @@ var angle: float:
     get:
         return 180 if self == UP else 135 if self == UP_LEFT else 225 if self == UP_RIGHT else 0 if self == DOWN else 45 if self == DOWN_LEFT else 315 if self == DOWN_RIGHT else 90 if self == LEFT else 270 if self == RIGHT else 0
 
-func speed_of(entity: AutomobileEntity) -> Vector2:
-    return Vector2(0, -entity.move_speed) if self == UP else Vector2(-entity.move_speed, -entity.move_speed) if self == UP_LEFT else Vector2(entity.move_speed, -entity.move_speed) if self == UP_RIGHT else Vector2(0, entity.move_speed) if self == DOWN else Vector2(-entity.move_speed, entity.move_speed) if self == DOWN_LEFT else Vector2(entity.move_speed, entity.move_speed) if self == DOWN_RIGHT else Vector2(-entity.move_speed, 0) if self == LEFT else Vector2(entity.move_speed, 0) if self == RIGHT else Vector2.ZERO
+var speed:
+    get:
+        return Vector2(0, -1) if self == UP else Vector2(-1, -1) if self == UP_LEFT else Vector2(1, -1) if self == UP_RIGHT else Vector2(0, 1) if self == DOWN else Vector2(-1, 1) if self == DOWN_LEFT else Vector2(1, 1) if self == DOWN_RIGHT else Vector2(-1, 0) if self == LEFT else Vector2(1, 0) if self == RIGHT else Vector2.ZERO

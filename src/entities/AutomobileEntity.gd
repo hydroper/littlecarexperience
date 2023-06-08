@@ -29,7 +29,7 @@ var move_speed: float:
 
 var raw_speed: Vector2:
     get:
-        return self._turn_dir.speed_of(self) if self._moving else Vector2.ZERO
+        return (self._turn_dir.speed * self._move_speed) if self._moving else Vector2.ZERO
 
 var current_rotation: float:
     get:
