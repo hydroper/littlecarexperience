@@ -21,8 +21,6 @@ size = Vector2(123.495, 20)
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_r6xri")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [node name="world" type="Node2D" parent="."]
 
 [node name="entities" type="Node2D" parent="world"]
@@ -72,3 +70,5 @@ offset_right = 1515.0
 offset_bottom = 854.0
 
 [node name="entity_labels" type="Node2D" parent="world"]
+
+[node name="ui" type="CanvasLayer" parent="."]
