@@ -15,10 +15,6 @@ var current_rotation: float:
     get:
         return self._current_rotation
 
-# keep rotation angle between 0-360.
-static func _fix_angle_range(a: float) -> float:
-    return 360 - fmod(-a, 360.0) if a < 0 else fmod(a, 360.0)
-
 func _init(increment_degrees: float):
     self.increment_degrees = increment_degrees
 
@@ -31,7 +27,7 @@ func tween(tween_node: Node2D, target_degrees: float):
         self.stop()
     self._tween_node = tween_node
     self._current_rotation = self._tween_node.rotation_degrees
-    self._target_degrees = fmod(roundf(_fix_angle_range(target_degrees)), 360.0)
+    self._target_degrees = fmod(roundf(AngleUtil.apply_range(target_degrees)), 360.0)
     self._running = true
 
 func stop():
@@ -70,4 +66,4 @@ func _update_route():
 
 # keep node rotation between 0-360.
 func _lock_tween_node_rotation():
-    self._current_rotation = fmod(_fix_angle_range(self._current_rotation), 360)
+    self._current_rotation = fmod(AngleUtil.apply_range(self._current_rotation), 360)

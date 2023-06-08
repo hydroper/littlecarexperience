@@ -12,7 +12,7 @@ var _route_result_delta: float = 0
 
 var _current_rotation: float:
     get:
-        return fmod(_fix_angle_range(self._tween_node.rotation_degrees), 360)
+        return fmod(AngleUtil.apply_range(self._tween_node.rotation_degrees), 360)
 
 func _init(tween_node: Node2D, increment_degrees: float):
     self._tween_node = tween_node
@@ -21,14 +21,10 @@ func _init(tween_node: Node2D, increment_degrees: float):
 func is_running() -> bool:
     return self._running
 
-# keep rotation angle between 0-360.
-static func _fix_angle_range(a: float) -> float:
-    return 360 - fmod(-a, 360.0) if a < 0 else fmod(a, 360.0)
-
 func tween(target_degrees: float):
     if self.is_running():
         self.stop()
-    self._target_degrees = fmod(roundf(_fix_angle_range(target_degrees)), 360.0)
+    self._target_degrees = fmod(roundf(AngleUtil.apply_range(target_degrees)), 360.0)
     self._running = true
 
 func stop():
