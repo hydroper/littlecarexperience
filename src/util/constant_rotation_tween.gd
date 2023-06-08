@@ -43,14 +43,9 @@ func process(delta: float) -> void:
         self._tween_node.rotation_degrees = self._current_rotation
         return
     self._update_route()
-    var go_clockwise = self._route_result_go_clockwise
     var route_delta = self._route_result_delta
-    self._current_rotation += self.increment_degrees * self._increment_scale * delta
-    if route_delta <= 1.8:
-        self._tween_node.rotation_degrees = self._target_degrees
-        self._running = false
-    else:
-        self._tween_node.rotation_degrees = self._current_rotation
+    self._current_rotation += self._increment_scale if route_delta <= 2.7 else self.increment_degrees * self._increment_scale * delta
+    self._tween_node.rotation_degrees = self._current_rotation
 
 func _update_route() -> void:
     var a = self._target_degrees
