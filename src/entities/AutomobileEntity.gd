@@ -69,9 +69,7 @@ func _process(delta):
         self._pressing_down = Input.is_action_pressed("move_down")
         self._pressing_left = Input.is_action_pressed("move_left")
         self._pressing_right = Input.is_action_pressed("move_right")
-
         self._turn_dir = TurnDirection.UP_LEFT if (self._pressing_up and self._pressing_left) else TurnDirection.UP_RIGHT if (self._pressing_up and self._pressing_right) else TurnDirection.UP if self._pressing_up else TurnDirection.DOWN_LEFT if (self._pressing_down and self._pressing_left) else TurnDirection.DOWN_RIGHT if (self._pressing_down and self._pressing_right) else TurnDirection.DOWN if self._pressing_down else TurnDirection.LEFT if self._pressing_left else TurnDirection.RIGHT if self._pressing_right else self._turn_dir
-
     else:
         self._pressing_up = false
         self._pressing_down = false
