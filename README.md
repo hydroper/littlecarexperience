@@ -4,7 +4,7 @@ Defeat other players to get top ranking.
 
 ## In Progress
 
-This game is not done yet.
+This game is not done yet. Note you need at least Godot 4.1 to compile the project.
 
 ## Assets
 
