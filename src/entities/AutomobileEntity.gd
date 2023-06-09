@@ -36,7 +36,7 @@ var current_rotation: float:
         return self.rotation_degrees
 
 func _ready() -> void:
-    self._rotation_tween = ConstantPhysicsRotationTween.new(self, 5)
+    self._rotation_tween = ConstantPhysicsRotationTween.new(self, 3)
     self._camera.enabled = self.is_main_player
     self.rotation_degrees = self._turn_dir.angle
 
