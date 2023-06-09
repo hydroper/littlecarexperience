@@ -5,7 +5,7 @@ var increment_degrees: float
 var _tween_node: Node2D = null
 var _running: bool = false
 var _increment_scale: float = 1
-var _target_degrees: float = 0
+var _final_degrees: float = 0
 var _current_rotation: float = 0
 
 var _route_result_go_clockwise: bool = false
@@ -21,13 +21,13 @@ func _init(increment_degrees: float):
 func is_running() -> bool:
     return self._running
 
-func tween(tween_node: Node2D, target_degrees: float):
+func tween(tween_node: Node2D, final_degrees: float):
     if self.is_running():
         self._tween_node.rotation_degrees = self._current_rotation
         self.stop()
     self._tween_node = tween_node
     self._current_rotation = self._tween_node.rotation_degrees
-    self._target_degrees = fmod(roundf(AngleUtil.apply_range(target_degrees)), 360.0)
+    self._final_degrees = fmod(roundf(AngleUtil.apply_range(final_degrees)), 360.0)
     self._running = true
 
 func stop() -> void:
@@ -38,7 +38,7 @@ func process(delta: float) -> void:
     if not self._running:
         return
     self._lock_tween_node_rotation()
-    if self._current_rotation == self._target_degrees:
+    if self._current_rotation == self._final_degrees:
         self._running = false
         self._tween_node.rotation_degrees = self._current_rotation
         return
@@ -48,7 +48,7 @@ func process(delta: float) -> void:
     self._tween_node.rotation_degrees = self._current_rotation
 
 func _update_route() -> void:
-    var a = self._target_degrees
+    var a = self._final_degrees
     var b = self._current_rotation
     var ab = a - b
     var ba = b - a

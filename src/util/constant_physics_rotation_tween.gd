@@ -5,7 +5,7 @@ var increment_degrees: float
 var _tween_node: Node2D = null
 var _running: bool = false
 var _increment_scale: float = 1
-var _target_degrees: float = 0
+var _final_degrees: float = 0
 
 var _route_result_go_clockwise: bool = false
 var _route_result_delta: float = 0
@@ -21,10 +21,10 @@ func _init(tween_node: Node2D, increment_degrees: float):
 func is_running() -> bool:
     return self._running
 
-func tween(target_degrees: float) -> void:
+func tween(final_degrees: float) -> void:
     if self.is_running():
         self.stop()
-    self._target_degrees = fmod(roundf(AngleUtil.apply_range(target_degrees)), 360.0)
+    self._final_degrees = fmod(roundf(AngleUtil.apply_range(final_degrees)), 360.0)
     self._running = true
 
 func stop() -> void:
@@ -34,7 +34,7 @@ func integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     if not self._running:
         return
     var current_rotation = self._current_rotation
-    if current_rotation == self._target_degrees:
+    if current_rotation == self._final_degrees:
         self._running = false
         state.angular_velocity = 0
         return
@@ -43,7 +43,7 @@ func integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     state.angular_velocity = (1.0 if (route_delta <= 3 and self.increment_degrees > 1.0) else self.increment_degrees) * self._increment_scale
 
 func _update_route(current_rotation: float) -> void:
-    var a = self._target_degrees
+    var a = self._final_degrees
     var b = current_rotation
     var ab = a - b
     var ba = b - a
