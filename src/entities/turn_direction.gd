@@ -30,6 +30,6 @@ var angle: float:
     get:
         return self._angle
 
-var speed:
+var speed: Vector2:
     get:
         return self._speed
