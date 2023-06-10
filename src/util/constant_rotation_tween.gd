@@ -15,8 +15,11 @@ var current_rotation: float:
     get:
         return self._current_rotation
 
+# delta ~= 0.02
+const COMMON_DELTA_SCALE = 50
+
 func _init(increment_degrees: float):
-    self.increment_degrees = increment_degrees
+    self.increment_degrees = increment_degrees * COMMON_DELTA_SCALE
 
 func is_running() -> bool:
     return self._running
