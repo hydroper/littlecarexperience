@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2sr8o72yu0ca"]
 
-[ext_resource type="Script" path="res://src/entities/AutomobileEntity.gd" id="1_1ccpv"]
+[ext_resource type="Script" path="res://src/entities/automobile_entity.gd" id="1_1ccpv"]
 [ext_resource type="Texture2D" uid="uid://bbr07ery7p5i7" path="res://res/img/automobile1.png" id="3_grdfi"]
 [ext_resource type="Texture2D" uid="uid://b5o25lyujheyg" path="res://res/img/automobile-shadow.png" id="3_jk1x2"]
 

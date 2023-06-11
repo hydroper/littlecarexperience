@@ -2,7 +2,7 @@ class_name AutomobileEntity
 extends RigidBody2D
 
 var player_data: PlayerData = null
-var player_label: Node2D = preload("res://src/entities/EntityLabel.tscn").instantiate()
+var player_label: Node2D = preload("res://src/entities/entity_label.tscn").instantiate()
 
 var is_main_player: bool = false
 
