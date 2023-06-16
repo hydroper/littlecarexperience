@@ -22,7 +22,7 @@ gdscript/warnings/shadowed_variable=0
 [display]
 
 window/size/viewport_width=1300
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [gui]
 
@@ -61,5 +61,5 @@ move_right={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=1
