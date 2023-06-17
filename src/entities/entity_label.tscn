@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://h3l43kfrhw32"]
+[gd_scene load_steps=3 format=3 uid="uid://h3l43kfrhw32"]
 
 [ext_resource type="Script" path="res://src/entities/entity_label.gd" id="1_4kwp5"]
+[ext_resource type="Theme" uid="uid://dfpxcklbmeuya" path="res://src/themes/default.tres" id="2_pk0du"]
 
 [node name="EntityLabel" type="Node2D"]
 script = ExtResource("1_4kwp5")
@@ -17,6 +18,7 @@ offset_right = 348.0
 offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_pk0du")
 theme_override_font_sizes/font_size = 50
 text = "undefined"
 horizontal_alignment = 1
