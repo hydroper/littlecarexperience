@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5o25lyujheyg"
-path="res://.godot/imported/automobile-shadow.png-335df0977a7ccac019b2d47274dd2387.ctex"
+uid="uid://bbr07ery7p5i7"
+path="res://.godot/imported/car-1.png-a2891536e63bda05d7b54c31fcc99329.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/img/automobile-shadow.png"
-dest_files=["res://.godot/imported/automobile-shadow.png-335df0977a7ccac019b2d47274dd2387.ctex"]
+source_file="res://res/img/car-1.png"
+dest_files=["res://.godot/imported/car-1.png-a2891536e63bda05d7b54c31fcc99329.ctex"]
 
 [params]
 

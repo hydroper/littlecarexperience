@@ -68,6 +68,6 @@ offset_top = 714.0
 offset_right = 1515.0
 offset_bottom = 854.0
 
-[node name="entity_labels" type="Node2D" parent="world"]
+[node name="car_labels" type="Node2D" parent="world"]
 
 [node name="ui" type="CanvasLayer" parent="."]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://2sr8o72yu0ca"]
 
-[ext_resource type="Script" path="res://src/entities/automobile_entity.gd" id="1_1ccpv"]
-[ext_resource type="Texture2D" uid="uid://bbr07ery7p5i7" path="res://res/img/automobile1.png" id="3_grdfi"]
-[ext_resource type="Texture2D" uid="uid://b5o25lyujheyg" path="res://res/img/automobile-shadow.png" id="3_jk1x2"]
+[ext_resource type="Script" path="res://src/entities/car_1.gd" id="1_1ccpv"]
+[ext_resource type="Texture2D" uid="uid://bbr07ery7p5i7" path="res://res/img/car-1.png" id="3_grdfi"]
+[ext_resource type="Texture2D" uid="uid://b5o25lyujheyg" path="res://res/img/car-shadow.png" id="3_jk1x2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk75y"]
 size = Vector2(77, 157)
 
-[node name="AutomobileEntity" type="RigidBody2D"]
+[node name="Car" type="RigidBody2D"]
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_1ccpv")
