@@ -4,7 +4,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_brv5d"]
 friction = 0.0
-bounce = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lso3q"]
 size = Vector2(177, 944)

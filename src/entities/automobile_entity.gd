@@ -27,7 +27,7 @@ var move_speed: float:
     get:
         return self._move_speed
 
-var raw_speed: Vector2:
+var force: Vector2:
     get:
         return (self._turn_dir.speed * self._move_speed) if self._moving else Vector2.ZERO
 
@@ -88,8 +88,4 @@ func _process(delta: float) -> void:
             self._turn_dir = TurnDirection.RIGHT
             self._rotation_tween.tween(self._turn_dir.angle)
 
-    self.move_forward(delta)
-
-func move_forward(_delta: float) -> void:
-    # self.apply_force(self.raw_speed)
-    self.apply_central_force(self.raw_speed)
+    self.apply_central_force(self.force)
