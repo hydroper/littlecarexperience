@@ -18,18 +18,18 @@ var _pressing_up: bool = false
 var _pressing_down: bool = false
 var _pressing_left: bool = false
 var _pressing_right: bool = false
-var _move_speed: float = 700
+var _move_force: float = 700
 var _max_speed: float = 1000
 
 const DECEL: float = 14
 
-var move_speed: float:
+var move_force: float:
     get:
-        return self._move_speed
+        return self._move_force
 
 var force: Vector2:
     get:
-        return (self._turn_dir.speed * self._move_speed) if self._moving else Vector2.ZERO
+        return (self._turn_dir.speed * self._move_force) if self._moving else Vector2.ZERO
 
 var current_rotation: float:
     get:
