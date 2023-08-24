@@ -1,6 +1,5 @@
 extends Node2D
 
-var game_data: GameData = GameData.new()
 var main_player: AutomobileEntity = null
 
 @onready
