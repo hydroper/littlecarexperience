@@ -1,10 +1,6 @@
 # Car Knock Online
 
-Defeat other players to get top ranking.
-
-## In Progress
-
-This game is not done yet.
+Exploration top-down 2D car game inspired by a promotional HotWheels game called SharkBite Bay Adventure.
 
 ## Assets
 
