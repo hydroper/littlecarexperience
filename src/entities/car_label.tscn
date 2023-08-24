@@ -20,5 +20,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_pk0du")
 theme_override_font_sizes/font_size = 50
-text = "undefined"
+text = "Label"
 horizontal_alignment = 1
