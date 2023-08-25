@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Car Knock Online"
+config/name="CarVerse"
 run/main_scene="res://src/screens/game/game_screen.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
