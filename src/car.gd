@@ -17,30 +17,30 @@ var accel_force: Vector2:
     get:
         if accel_dir == null:
             return Vector2.ZERO
-        return accel_dir.force * ACCEL_FORCE
+        return accel_dir.vector * ACCEL_FORCE
 
 var _accelerating_left: bool:
     get:
-        return self.accel_dir == null if false else self.accel_dir.is_left
+        return false if self.accel_dir == null else self.accel_dir.is_left
 
 var _accelerating_right: bool:
     get:
-        return self.accel_dir == null if false else self.accel_dir.is_right
+        return false if self.accel_dir == null else self.accel_dir.is_right
 
 var _accelerating_up: bool:
     get:
-        return self.accel_dir == null if false else self.accel_dir.is_up
+        return false if self.accel_dir == null else self.accel_dir.is_up
 
 var _accelerating_down: bool:
     get:
-        return self.accel_dir == null if false else self.accel_dir.is_down
+        return false if self.accel_dir == null else self.accel_dir.is_down
 
 func _ready() -> void:
     self._rotation_tween = RigidBody2DRotationTween.new(self, 4)
     self.camera.enabled = self.is_main_player
     self.rotation_degrees = self.dir.angle
 
-func _process():
+func _process(_delta: float):
     self.camera.enabled = self.is_main_player
     self.label.position = self.position
     var k = self.dir
@@ -56,10 +56,10 @@ func _process():
             self.dir = CarDirection.RIGHT
     else:
         self.dir = self.accel_dir
-        self.apply_central_force(self.force)
+        self.apply_central_force(self.accel_force)
 
     if self.dir != k:
-        self._rotation_tween.tween(self.accel_dir.angle)
+        self._rotation_tween.tween(self.dir.angle)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     self._rotation_tween.integrate_forces(state)

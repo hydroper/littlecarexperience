@@ -16,7 +16,7 @@ func _ready() -> void:
     self.main_player.position = Vector2(600, 430)
     self.main_player.is_main_player = true
     self.world_entities.add_child(self.main_player)
-    self.world_car_labels.add_child(self.main_player.player_label)
+    self.world_car_labels.add_child(self.main_player.label)
 
 func _process(_delta: float) -> void:
     pass
