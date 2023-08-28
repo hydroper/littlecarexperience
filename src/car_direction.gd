@@ -30,7 +30,7 @@ static func from_arrows(left: bool, right: bool, up: bool, down: bool) -> CarDir
     elif down:
         return DOWN_LEFT if left else DOWN_RIGHT if right else DOWN
     else:
-        return null
+        return LEFT if left else RIGHT if right else null
 
 static var _UP_DIRECTIONS: Array = [UP, UP_LEFT, UP_RIGHT]
 static var _DOWN_DIRECTIONS: Array = [DOWN, DOWN_LEFT, DOWN_RIGHT]
