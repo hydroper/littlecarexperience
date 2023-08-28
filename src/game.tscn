@@ -1,7 +1,5 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckewe5sw03jor"]
 
-[ext_resource type="Script" path="res://src/screens/game/game_screen.gd" id="1_r6xri"]
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_brv5d"]
 friction = 0.0
 
@@ -17,8 +15,7 @@ size = Vector2(237.5, 1136.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1x143"]
 size = Vector2(123.495, 20)
 
-[node name="GameScreen" type="Node2D"]
-script = ExtResource("1_r6xri")
+[node name="Game" type="Node2D"]
 
 [node name="world" type="Node2D" parent="."]
 

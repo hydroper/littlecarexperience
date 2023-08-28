@@ -1,13 +1,21 @@
-# CarVerse
+# CarKnock
 
-An universe top-down 2D car game inspired by a promotional HotWheels game called SharkBite Bay Adventure.
+Have fun in an online 2D car game!
+
+CarKnock is designed after a promotional HotWheels game called SharkBite Bay Adventure.
 
 ## Assets
 
 The default vehicle is a Porsche Carrera GT for now. The picture is based on [https://sketchfab.com/3d-models/porsche-carrera-gt-d2687485af7b4dc6946ce1b8cb595c8a](https://sketchfab.com/3d-models/porsche-carrera-gt-d2687485af7b4dc6946ce1b8cb595c8a).
 
-## World
+## Server
 
-Area endpoints transport to another area.
+A server consists of multiple areas. There is a limit of players connected to the server.
 
-Players do the job of world building in terms of privileges.
+Servers are created by players.
+
+## Level
+
+- _Authors:_ Levels are maintained by authorized players.
+- _Level state:_ The author may choose for initial state to be restored after all players leave a level.
+- _Teleport:_ A teleport area leads to another level. This includes endpoints of the level and doors.

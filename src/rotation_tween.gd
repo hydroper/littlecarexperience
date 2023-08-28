@@ -1,4 +1,4 @@
-class_name ConstantRotationTween
+class_name RotationTween
 
 var increment_degrees: float
 
@@ -30,7 +30,7 @@ func tween(tween_node: Node2D, final_degrees: float):
         self.stop()
     self._tween_node = tween_node
     self._current_rotation = self._tween_node.rotation_degrees
-    self._final_degrees = fmod(roundf(AngleUtil.apply_range(final_degrees)), 360.0)
+    self._final_degrees = fmod(roundf(Angle.zero_to_360(final_degrees)), 360.0)
     self._running = true
 
 func stop() -> void:
@@ -64,4 +64,4 @@ func _update_route() -> void:
 
 # keep node rotation between 0-360.
 func _lock_tween_node_rotation() -> void:
-    self._current_rotation = fmod(AngleUtil.apply_range(self._current_rotation), 360)
+    self._current_rotation = fmod(Angle.zero_to_360(self._current_rotation), 360)

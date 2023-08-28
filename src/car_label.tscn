@@ -1,10 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://h3l43kfrhw32"]
 
-[ext_resource type="Script" path="res://src/entities/car_label.gd" id="1_4kwp5"]
-[ext_resource type="Theme" uid="uid://dfpxcklbmeuya" path="res://src/themes/default.tres" id="2_pk0du"]
+[ext_resource type="Theme" uid="uid://dfpxcklbmeuya" path="res://themes/default.tres" id="2_pk0du"]
 
 [node name="CarLabel" type="Node2D"]
-script = ExtResource("1_4kwp5")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8

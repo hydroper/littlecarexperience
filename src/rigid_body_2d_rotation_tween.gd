@@ -1,8 +1,8 @@
-class_name ConstantPhysicsRotationTween
+class_name RigidBody2DRotationTween
 
 var increment_degrees: float
 
-var _tween_node: Node2D = null
+var _tween_node: RigidBody2D = null
 var _running: bool = false
 var _increment_scale: float = 1
 var _final_degrees: float = 0
@@ -12,9 +12,9 @@ var _route_result_delta: float = 0
 
 var _current_rotation: float:
     get:
-        return fmod(AngleUtil.apply_range(self._tween_node.rotation_degrees), 360)
+        return fmod(Angle.zero_to_360(self._tween_node.rotation_degrees), 360)
 
-func _init(tween_node: Node2D, increment_degrees: float):
+func _init(tween_node: RigidBody2D, increment_degrees: float):
     self._tween_node = tween_node
     self.increment_degrees = increment_degrees
 
@@ -24,7 +24,7 @@ func is_running() -> bool:
 func tween(final_degrees: float) -> void:
     if self.is_running():
         self.stop()
-    self._final_degrees = fmod(roundf(AngleUtil.apply_range(final_degrees)), 360.0)
+    self._final_degrees = fmod(roundf(Angle.zero_to_360(final_degrees)), 360.0)
     self._running = true
 
 func stop() -> void:

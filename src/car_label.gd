@@ -1,0 +1,2 @@
+class_name CarLabel
+extends Node2D
